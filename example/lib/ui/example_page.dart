@@ -8,6 +8,7 @@ class ExampleViewModel {
   final double max;
   final double value;
   final InnerWidget? innerWidget;
+  final double? limitMinValue;
 
   ExampleViewModel(
       {required this.pageColors,
@@ -15,7 +16,8 @@ class ExampleViewModel {
       this.min = 0,
       this.max = 100,
       this.value = 50,
-      this.innerWidget});
+      this.innerWidget,
+      this.limitMinValue});
 }
 
 class ExamplePage extends StatelessWidget {
@@ -45,6 +47,7 @@ class ExamplePage extends StatelessWidget {
             min: viewModel.min,
             max: viewModel.max,
             initialValue: viewModel.value,
+            limitMinValue: viewModel.limitMinValue,
           )),
         ),
       ),

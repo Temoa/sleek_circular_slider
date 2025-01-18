@@ -24,6 +24,7 @@ class SleekCircularSlider extends StatefulWidget {
   final OnChange? onChangeStart;
   final OnChange? onChangeEnd;
   final InnerWidget? innerWidget;
+  final double? limitMinValue;
   static const defaultAppearance = CircularSliderAppearance();
 
   double get angle {
@@ -39,7 +40,8 @@ class SleekCircularSlider extends StatefulWidget {
       this.onChange,
       this.onChangeStart,
       this.onChangeEnd,
-      this.innerWidget})
+      this.innerWidget,
+      this.limitMinValue})
       : assert(min <= max),
         assert(initialValue >= min && initialValue <= max),
         super(key: key);
@@ -184,6 +186,11 @@ class _SleekCircularSliderState extends State<SleekCircularSlider>
         selectedAngle: _selectedAngle,
         defaultAngle: defaultAngle,
         counterClockwise: counterClockwise);
+
+    if (widget.limitMinValue != null) {
+      final angle = valueToAngle(widget.limitMinValue!, widget.min, widget.max, _angleRange);
+      if (_currentAngle! <= angle) _currentAngle = angle;
+    }
 
     _painter = _CurvePainter(
         startAngle: _startAngle,

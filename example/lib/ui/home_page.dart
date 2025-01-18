@@ -365,6 +365,21 @@ final viewModel10 = ExampleViewModel(
 final example10 = ExamplePage(
   viewModel: viewModel10,
 );
+final viewModel11 = ExampleViewModel(
+    appearance: appearance01,
+    min: 0,
+    max: 100,
+    value: 20,
+    pageColors: [
+      HexColor('#FFFFFF'),
+      HexColor('#D7F2FD'),
+      HexColor('#FFFFFF'),
+      HexColor('#FFFFFF')
+    ],
+    limitMinValue: 10);
+final example11 = ExamplePage(
+  viewModel: viewModel11,
+);
 
 String printDuration(Duration duration) {
   String twoDigits(int n) {
@@ -392,6 +407,7 @@ class _HomePageState extends State<HomePage> {
         child: PageView(
       controller: controller,
       children: <Widget>[
+        example11,
         example01,
         example10,
         RandomValuePage(),
